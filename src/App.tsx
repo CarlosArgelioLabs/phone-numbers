@@ -37,15 +37,19 @@ function App() {
                 
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item eventKey="venezuela">Venezuela</Dropdown.Item>
-                <Dropdown.Item eventKey="colombia">Colombia</Dropdown.Item>
-                <Dropdown.Item eventKey="argentina">Argentina</Dropdown.Item>
+                {
+                  countries.map((country) => (
+                    <>
+                      <Dropdown.Item eventKey={country.country}>{country.country}</Dropdown.Item>
+                    </>
+                  ))
+                }
               </Dropdown.Menu>
             </Dropdown>
           </Col>
 
           <Col xs={3}>
-            <InputPhoneNumberMask 
+            <InputPhoneNumberMask
               mask={maskCountry}
             />
           </Col>
