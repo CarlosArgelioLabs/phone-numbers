@@ -38,10 +38,8 @@ function App() {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 {
-                  countries.map((country) => (
-                    <>
-                      <Dropdown.Item eventKey={country.country}>{country.country}</Dropdown.Item>
-                    </>
+                  countries.map((country, index) => (
+                    <Dropdown.Item key={index} eventKey={country.country}>{country.country}</Dropdown.Item>
                   ))
                 }
               </Dropdown.Menu>
