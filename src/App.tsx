@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import { icons } from "./assets";
-import { Col, Container, DropdownButton, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { InputPhoneNumberMask } from "./components/Input";
 import { countries } from "./utils/countries";
 
@@ -13,14 +12,15 @@ function App() {
 
   const handleSelectCountry = (e) => {
     setCountry(e)    
-    handleMask()
   }
 
-  const handleMask = () => {
+  useEffect(() => {
     const data = countries.find((countries) => countries.country === country)
-    setFlag(data.icon)
-    setMaskCountry(`${data.code} ${data.mask}`)
-  }
+    if ( data !== undefined ) {
+      setFlag(data.icon)
+      setMaskCountry(`${data.code} ${data.mask}`)
+    }
+  }, [country])
 
 
 
@@ -38,10 +38,8 @@ function App() {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 {
-                  countries.map((country) => (
-                    <>
-                      <Dropdown.Item eventKey={country.country}>{country.country}</Dropdown.Item>
-                    </>
+                  countries.map((country, index) => (
+                    <Dropdown.Item key={index} eventKey={country.country}>{country.country}</Dropdown.Item>
                   ))
                 }
               </Dropdown.Menu>
