@@ -5,24 +5,21 @@ import { InputPhoneNumberMask } from "./components/Input";
 import { countries } from "./utils/countries";
 
 function App() {
-
-  const [country, setCountry] = useState("")
-  const [maskCountry, setMaskCountry] = useState("")
-  const [flag, setFlag] = useState("")
+  const [country, setCountry] = useState("");
+  const [maskCountry, setMaskCountry] = useState("");
+  const [flag, setFlag] = useState("");
 
   const handleSelectCountry = (e) => {
-    setCountry(e)    
-  }
+    setCountry(e);
+  };
 
   useEffect(() => {
-    const data = countries.find((countries) => countries.country === country)
-    if ( data !== undefined ) {
-      setFlag(data.icon)
-      setMaskCountry(`${data.code} ${data.mask}`)
+    const data = countries.find((countries) => countries.country === country);
+    if (data !== undefined) {
+      setFlag(data.icon);
+      setMaskCountry(`${data.code} ${data.mask}`);
     }
-  }, [country])
-
-
+  }, [country]);
 
   return (
     <>
@@ -31,25 +28,28 @@ function App() {
           <Col xs={4}>
             <Dropdown onSelect={handleSelectCountry}>
               <Dropdown.Toggle>
-                {
-                  flag ? <img src={flag} alt={country} /> : "Seleccione un pais"
-                }
-                
+                {flag ? <img src={flag} alt={country} /> : "Seleccione un pais"}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                {
-                  countries.map((country, index) => (
-                    <Dropdown.Item key={index} eventKey={country.country}>{country.country}</Dropdown.Item>
-                  ))
-                }
+                {countries.map((country, index) => (
+                  <Dropdown.Item key={index} eventKey={country.country}>
+                    <img
+                      src={country.icon}
+                      style={{
+                        marginRight: "8px",
+                        width: "20px",
+                        height: "20px",
+                      }}
+                    />
+                    {country.country}
+                  </Dropdown.Item>
+                ))}
               </Dropdown.Menu>
             </Dropdown>
           </Col>
 
           <Col xs={3}>
-            <InputPhoneNumberMask
-              mask={maskCountry}
-            />
+            <InputPhoneNumberMask mask={maskCountry} />
           </Col>
         </Row>
       </Container>
