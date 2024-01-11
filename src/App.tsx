@@ -23,9 +23,9 @@ function App() {
 
   return (
     <>
-      <Container>
+      <Container fluid>
         <Row>
-          <Col xs={4}>
+          <Col xs={12} sm={6} md={4} lg={2}>
             <Dropdown onSelect={handleSelectCountry}>
               <Dropdown.Toggle>
                 {flag ? <img src={flag} alt={country} /> : "Seleccione un pais"}
@@ -48,7 +48,7 @@ function App() {
             </Dropdown>
           </Col>
 
-          <Col xs={3}>
+          <Col xs={12} sm={6} md={8} lg={10}>
             <InputPhoneNumberMask mask={maskCountry} />
           </Col>
         </Row>
