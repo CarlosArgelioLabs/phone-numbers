@@ -1,7 +1,7 @@
 {
   "name": "react-phone-numbers",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2-alpha",
   "type": "module",
   "scripts": {
     "dev": "vite",
