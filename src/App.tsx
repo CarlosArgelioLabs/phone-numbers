@@ -9,7 +9,7 @@ function App() {
   const [maskCountry, setMaskCountry] = useState("");
   const [flag, setFlag] = useState("");
 
-  const handleSelectCountry = (e) => {
+  const handleSelectCountry = (e: any) => {
     setCountry(e);
   };
 
